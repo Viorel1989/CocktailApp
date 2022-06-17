@@ -1,5 +1,18 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+block page
+  h1.mt-5 Cocktails main page
+
+
+  form
+    .form-group
+      label(for='cocktailName') Enter a cocktail name here
+    .form-group
+      input#cocktailName.form-control(type='text' placeholder="Enter a name for a cocktail")
+    .form-group
+      .form-check
+        input#nonAlcoholic.form-check-input(type='checkbox')
+        label.form-check-label(for='nonAlcoholic') Check me if you don't want alcoholic cocktail's
+    .form-group
+      .col-sm-10
+        button.btn.btn-primary.col-sm-5(type='submit') Search

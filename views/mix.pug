@@ -1,0 +1,21 @@
+extends layout
+
+block page
+    h1.mt-5 Go for it
+
+    form
+        .form-group
+            .form-check
+                input#gridCheck1.form-check-input(type='checkbox')
+                label.form-check-label(for='Ingredinet1') Ingredinet 1
+        .form-group
+            .form-check
+                input#gridCheck2.form-check-input(type='checkbox')
+                label.form-check-label(for='Ingredinet2') Ingredinet 2
+        .form-group
+            .form-check
+                input#gridCheck3.form-check-input(type='checkbox')
+                label.form-check-label(for='Ingredinet2') Ingredinet 3
+        .form-group
+            button.btn.btn-primary.col-sm-5(type='submit') Search
+
