@@ -1,21 +1,15 @@
 extends layout
 
 block page
-    h1.mt-5 Go for it
+    h1.mt-5 Pick your own flavour 
+
+    //- ul.list-group.list-group-flash
+    //-     li.list-group-item #{val}
 
     form
-        .form-group
+        each val in ingredient 
             .form-check
-                input#gridCheck1.form-check-input(type='checkbox')
-                label.form-check-label(for='Ingredinet1') Ingredinet 1
-        .form-group
-            .form-check
-                input#gridCheck2.form-check-input(type='checkbox')
-                label.form-check-label(for='Ingredinet2') Ingredinet 2
-        .form-group
-            .form-check
-                input#gridCheck3.form-check-input(type='checkbox')
-                label.form-check-label(for='Ingredinet2') Ingredinet 3
-        .form-group
-            button.btn.btn-primary.col-sm-5(type='submit') Search
-
+                input.form-check-input(type='checkbox' name='#{val}')
+                label.form-check-label(for='#{val}')
+                | #{val}
+        button.btn.btn-primary.col-sm-3(type='submit') Search
