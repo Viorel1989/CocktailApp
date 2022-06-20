@@ -3,13 +3,11 @@ extends layout
 block page
     h1.mt-5 Pick your own flavour 
 
-    //- ul.list-group.list-group-flash
-    //-     li.list-group-item #{val}
-
-    form
+    form(method="POST" id="ingredientsForm")
         each val in ingredient 
             .form-check
-                input.form-check-input(type='checkbox' name='#{val}')
-                label.form-check-label(for='#{val}')
+                input.form-check-input(type='checkbox' name='ingredients' value=`${val}`)
+                label.form-check-label(for=`${val}`)
                 | #{val}
-        button.btn.btn-primary.col-sm-3(type='submit') Search
+        button.btn.btn-primary.col-sm-3(id="ingredientsForm" type='submit') Search
+

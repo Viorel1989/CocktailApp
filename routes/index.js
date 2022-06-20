@@ -9,6 +9,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   const cocktailName = req.body.cocktailName;
+  // console.log(cocktailName);
 
   console.log("call cocktail api");
 
@@ -21,14 +22,55 @@ router.post("/", function (req, res, next) {
     })
     .then(function (response) {
       let result = [];
+      let description = response.data.drinks[0];
+      let instructions = description.strInstructions;
+      let pic = description.strDrinkThumb;
+
+      const ingredients = Object.keys(description)
+        .filter((key) => key.includes("strIngredient"))
+        .reduce((obj, key) => {
+          return Object.assign(obj, {
+            [key]: description[key],
+          });
+        }, {});
+      const ingredientsNames = Object.values(ingredients).filter(function (el) {
+        return el != null;
+      });
+      // console.log(ingredientsNames);
+
+      const measures = Object.keys(description)
+        .filter((key) => key.includes("strMeasure"))
+        .reduce((obj, key) => {
+          return Object.assign(obj, {
+            [key]: description[key],
+          });
+        }, {});
+      const measuresNames = Object.values(measures);
+      // console.log(measuresNames);
+
+      let receipe = "";
+      for (let i = 0; i < ingredientsNames.length; i++) {
+        if (ingredientsNames[i] && measuresNames[i]) {
+          receipe = receipe + `${ingredientsNames[i]}(${measuresNames[i]})`;
+        } else if (ingredientsNames[i] && !measuresNames[i]) {
+          receipe = receipe + `${ingredientsNames[i]}`;
+        }
+      }
+      // console.log(receipe);
 
       response.data.drinks.forEach((drink) => {
         const cocktail = `${drink.strDrink}`;
         result.push(cocktail);
       });
-      res.render("index", { cocktail: result });
-    })
 
+      if (req.xhr) {
+        res.json({ instructions: instructions, pic: pic, receipe: receipe });
+      } else {
+        res.render("index", {
+          cocktail: result,
+        });
+      }
+    })
     .catch(function (error) {
       console.log(error);
     });

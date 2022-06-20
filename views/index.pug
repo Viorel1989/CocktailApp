@@ -14,8 +14,8 @@ block page
 
   if cocktail !== undefined 
     h3.mt-5 Pick a flavour 
-    ul.list-group.list-group-flash
+    ul#cocktailsList.list-group.list-group-flash
       if cocktail.length 
         each val in cocktail 
-          li.list-group-item #{val}
+          li.list-group-item #[a(href="#" class="cocktailAnchor" data-cocktail-name=`${val}`) #{val}]
 
