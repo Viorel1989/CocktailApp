@@ -4,15 +4,18 @@ block page
   h1.mt-5 Cocktails main page
 
 
-  form
+  form(method="POST")
     .form-group
       label(for='cocktailName') Enter a cocktail name here
-    .form-group
-      input#cocktailName.form-control(type='text' placeholder="Enter a name for a cocktail")
-    .form-group
-      .form-check
-        input#nonAlcoholic.form-check-input(type='checkbox')
-        label.form-check-label(for='nonAlcoholic') Check me if you don't want alcoholic cocktail's
+      input#cocktailName.form-control(type='text' placeholder="Enter a name for a cocktail" name="cocktailName")
     .form-group
       .col-sm-10
         button.btn.btn-primary.col-sm-5(type='submit') Search
+
+  if cocktail !== undefined 
+    h3.mt-5 Pick a flavour 
+    ul#cocktailsList.list-group.list-group-flash
+      if cocktail.length 
+        each val in cocktail 
+          li.list-group-item #[a(href="#" class="cocktailAnchor" data-cocktail-name=`${val}`) #{val}]
+

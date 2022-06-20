@@ -1,0 +1,9 @@
+extends layout
+
+block page
+
+    h1.mt-5 Cocktails list based on your selection 
+
+    l#cocktailsListFromIngredient.list-group.list-group-flash
+        each val in cocktailsList 
+            li.list-group-item #{val}
