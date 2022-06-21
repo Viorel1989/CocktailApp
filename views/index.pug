@@ -7,15 +7,19 @@ block page
   form(method="POST")
     .form-group
       label(for='cocktailName') Enter a cocktail name here
-      input#cocktailName.form-control(type='text' placeholder="Enter a name for a cocktail" name="cocktailName")
+      input#cocktailName.form-control(type='text' placeholder="Enter a name for a cocktail" name="cocktailName" required)
+
+      if err  
+        div(id="serverFeedback" class="invalid-feedback" style={display: 'inline'}) Invalid cocktail name or server error    
     .form-group
       .col-sm-10
         button.btn.btn-primary.col-sm-5(type='submit') Search
 
   if cocktail !== undefined 
     h3.mt-5 Pick a flavour 
-    ul#cocktailsList.list-group.list-group-flash
+    ul#cocktailsList.list-group.list-group-flash.mb-5
       if cocktail.length 
         each val in cocktail 
-          li.list-group-item #[a(href="#" class="cocktailAnchor" data-cocktail-name=`${val}`) #{val}]
-
+          li.list-group-item #[a(href="#descriptionSection" class="cocktailAnchor" data-cocktail-name=`${val}`) #{val}]
+      else 
+        p Nothing to see here

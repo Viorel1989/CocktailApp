@@ -1,16 +1,15 @@
 $(document).on("click", ".cocktailAnchor", function () {
   const cocktailName = $(this).data("cocktail-name");
   function showDescription(data) {
-    const descriptionHeaderId = "descriptionHeader";
-
-    if (!$("#" + descriptionHeaderId).length) {
-      $(`
-        <h5 class="mt-3" id ="' + ${descriptionHeaderId} + '">Description</h5>
-        <p>${data.instructions}</p>
-        <img src=${data.pic} />
-        <p>${data.receipe}</p>
-        `).insertAfter("#cocktailsList");
-    }
+    $("#descriptionSection").empty();
+    $(`
+      <div id="descriptionSection">
+      <h5 class="mt-3">Description</h5>
+      <p>${data.instructions}</p>
+      <img src=${data.pic} width="800" height="600"/>
+      <p class="mt-3 mb-5" id="receipeParagraph">${data.receipe}</p>
+      </div>
+      `).insertAfter("#cocktailsList");
   }
 
   $.ajax({
