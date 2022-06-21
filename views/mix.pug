@@ -9,5 +9,6 @@ block page
                 input.form-check-input(type='checkbox' name='ingredients' value=`${val}`)
                 label.form-check-label(for=`${val}`)
                 | #{val}
-        button.btn.btn-primary.col-sm-3(id="ingredientsForm" type='submit') Search
+        button.btn.btn-primary.col-sm-3.mt-3(id="ingredientsForm" type='submit') Search
 
+    div(id="ingredientsFeedback" class="invalid-feedback" ) Please select at least one ingredient.

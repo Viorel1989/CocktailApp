@@ -28,15 +28,20 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  const { ingredients } = req.body;
+  const ingredients = req.body.ingredients;
   console.log(ingredients);
-
   let params = new URLSearchParams();
-  for (let x = 0; x < ingredients.length; x++) {
-    params.append("i", ingredients[x]);
+
+  if (typeof ingredients == "string") {
+    params.append("i", ingredients);
+  } else {
+    for (let x = 0; x < ingredients.length; x++) {
+      params.append("i", ingredients[x]);
+    }
   }
   params.append("api_key", "1");
   console.log(params.toString());
+
   axios
     .get("http://www.thecocktaildb.com/api/json/v1/1/filter.php", { params })
     .then(function (response) {
@@ -53,7 +58,7 @@ router.post("/", function (req, res, next) {
     })
 
     .catch(function (error) {
-      console.log(error);
+      res.render("mix");
     });
 });
 
