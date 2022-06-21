@@ -8,6 +8,8 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
+  console.log(req.body.alcoholic);
+  console.log(req.body.nonAlcoholic);
   const cocktailName = req.body.cocktailName;
   console.log(cocktailName);
   if (cocktailName === "") {
@@ -23,7 +25,7 @@ router.post("/", function (req, res, next) {
         },
       })
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         let result = [];
         let description = response.data.drinks[0];
         let instructions = description.strInstructions;
@@ -63,10 +65,26 @@ router.post("/", function (req, res, next) {
         }
         // console.log(receipe);
 
-        response.data.drinks.forEach((drink) => {
-          const cocktail = `${drink.strDrink}`;
-          result.push(cocktail);
-        });
+        if (req.body.alcoholic) {
+          response.data.drinks.forEach((drink) => {
+            if (drink.strAlcoholic == "Alcoholic") {
+              const cocktail = `${drink.strDrink}`;
+              result.push(cocktail);
+            }
+          });
+        } else if (req.body.nonAlcoholic) {
+          response.data.drinks.forEach((drink) => {
+            if (drink.strAlcoholic == "Non alcoholic") {
+              const cocktail = `${drink.strDrink}`;
+              result.push(cocktail);
+            }
+          });
+        } else {
+          response.data.drinks.forEach((drink) => {
+            const cocktail = `${drink.strDrink}`;
+            result.push(cocktail);
+          });
+        }
 
         if (req.xhr) {
           res.json({ instructions: instructions, pic: pic, receipe: receipe });

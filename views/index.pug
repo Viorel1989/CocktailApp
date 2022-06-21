@@ -8,6 +8,15 @@ block page
     .form-group
       label(for='cocktailName') Enter a cocktail name here
       input#cocktailName.form-control(type='text' placeholder="Enter a name for a cocktail" name="cocktailName" required)
+    .form-group
+      .form-check
+        input#slcoholic.form-check-input(type='checkbox' name="alcoholic")
+        label.form-check-label(for='Alcoholic') Check me if you want alcoholic 
+    .form-group
+      .form-check
+        input#nonAlcoholic.form-check-input(type='checkbox' name="nonAlcoholic")
+        label.form-check-label(for='nonAlcoholic') Check me if you don't want alcoholic 
+
 
       if err  
         div(id="serverFeedback" class="invalid-feedback" style={display: 'inline'}) Invalid cocktail name or server error    

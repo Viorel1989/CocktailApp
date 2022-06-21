@@ -29,7 +29,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   const ingredients = req.body.ingredients;
-  console.log(ingredients);
+  // console.log(ingredients);
   let params = new URLSearchParams();
 
   if (typeof ingredients == "string") {
@@ -40,19 +40,19 @@ router.post("/", function (req, res, next) {
     }
   }
   params.append("api_key", "1");
-  console.log(params.toString());
+  // console.log(params.toString());
 
   axios
     .get("http://www.thecocktaildb.com/api/json/v1/1/filter.php", { params })
     .then(function (response) {
-      console.log(response.data.drinks);
+      // console.log(response.data.drinks);
       let cocktails = [];
 
       response.data.drinks.forEach((drink) => {
         const cocktail = `${drink.strDrink}`;
         cocktails.push(cocktail);
       });
-      console.log(cocktails);
+      // console.log(cocktails);
 
       res.render("mixList", { cocktailsList: cocktails });
     })
