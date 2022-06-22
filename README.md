@@ -2,6 +2,10 @@
 
 [Node.js](https://nodejs.org/en/) application built with [Express](https://expressjs.com/).
 
+## Demo
+
+Demo available at [https://viorel-cocktail-app.herokuapp.com/](https://viorel-cocktail-app.herokuapp.com/) (Heroku).
+
 ## Run Locally
 
 Clone the project
