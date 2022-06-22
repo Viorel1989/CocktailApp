@@ -6,9 +6,7 @@
 
 Clone the project
 
-```bash
-  git clone https://github.com/Viorel1989/CocktailApp.git
-```
+ https://github.com/Viorel1989/CocktailApp.git
 
 Go to the project directory
 
