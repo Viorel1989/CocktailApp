@@ -88,6 +88,14 @@ router.post("/", function (req, res, next) {
 
         if (req.xhr) {
           res.json({ instructions: instructions, pic: pic, receipe: receipe });
+        } else if (result.length == 1) {
+          let singleCocktailName = description.strDrink;
+          res.render("singleCocktail", {
+            cocktailName: singleCocktailName,
+            instructions: instructions,
+            pic: pic,
+            receipe: receipe,
+          });
         } else {
           res.render("index", {
             cocktail: result,

@@ -3,13 +3,12 @@ $(document).on("click", ".cocktailAnchor", function () {
   function showDescription(data) {
     $("#descriptionSection").empty();
     $(`
-      <div id="descriptionSection">
       <h5 class="mt-3">Description</h5>
       <p>${data.instructions}</p>
       <img src=${data.pic} width="800" height="600"/>
       <p class="mt-3 mb-5" id="receipeParagraph">${data.receipe}</p>
       </div>
-      `).insertAfter("#cocktailsList");
+      `).appendTo("#descriptionSection");
   }
 
   $.ajax({
