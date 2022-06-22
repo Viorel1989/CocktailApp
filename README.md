@@ -6,7 +6,8 @@
 
 Clone the project
 
- https://github.com/Viorel1989/CocktailApp.git
+https://github.com/Viorel1989/CocktailApp.git
+
 
 Go to the project directory
 
@@ -19,5 +20,7 @@ Go to the project directory
 ```
 
 ```bash
-  npm run startDev
+  npm run devStart
 ```
+
+Open http://localhost:3000/ in browser
