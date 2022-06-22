@@ -12,7 +12,7 @@ https://github.com/Viorel1989/CocktailApp.git
 Go to the project directory
 
 ```bash
-  cd geolocation
+  cd CocktailApp
 ```
 
 ```bash
